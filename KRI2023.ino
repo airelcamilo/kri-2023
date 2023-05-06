@@ -1031,28 +1031,36 @@ void tendang(){
     // cek
     //1
     // kaki kiri ke tengah
-    Leg(0,normalFootHeight-20,-tiltOffset+5,rotasiKaki+20,tegak+8,angleLeft,1);
-//    Hand(150,200,150,1);
-//    Hand(150,150,150,0);
+    Leg(0,normalFootHeight-20,-tiltOffset+5,rotasiKaki+45,tegak+8,angleLeft,1);
+    Leg(0,normalFootHeight-60,tiltOffset-5,rotasiKaki,tegak+15,angleRight,0);
+    Hand(150,200,150,0);
+    Hand(150,150,150,1);
+    moveOn(delayTime+20); 
+    
+    // kaki kanan naik
+    Leg(0,normalFootHeight-60,tiltOffset-10,rotasiKaki+5,tegak+15,angleRight,0);
+    moveOn(delayTime+5); 
+    
+    // kaki kanan tendang
+    Leg(0,normalFootHeight-60,tiltOffset-10,rotasiKaki+5,tegak+45,angleRight,0);
     moveOn(delayTime+10); 
     
-    //2
-    // kaki kanan naik
-    Leg(0,normalFootHeight-60,tiltOffset-5,rotasiKaki,tegak+15,angleRight,0);
-    moveOn(delayTime+10); 
+    // kaki kanan masuk
     Leg(0,normalFootHeight-60,tiltOffset-10,rotasiKaki+5,tegak+15,angleRight,0);
     moveOn(delayTime+10); 
+
+    // kaki kiri balik
+    Leg(0,normalFootHeight-20,-tiltOffset+5,rotasiKaki,tegak+8,angleLeft,1);
+    moveOn(delayTime+10); 
+
+      // kaki kanan turun
+//    Leg(0,normalFootHeight-20,tiltOffset-5,rotasiKaki+5,tegak+8,angleRight,0);
+//    moveOn(delayTime+20); 
 //    
-//    // kaki kanan tendang
-//    Leg(0,normalFootHeight-20,tiltOffset-10,rotasiKaki+5,tegak+15,angleRight,0);
-//    moveOn(delayTime); 
-//    Leg(0,normalFootHeight-20,tiltOffset-5,rotasiKaki,tegak+8,angleRight,0);
-//    moveOn(delayTime); 
-//    
-//    //3
-//    // kaki kiri balik
-//    Leg(0,normalFootHeight-20,-tiltOffset+5,rotasiKaki,tegak+8,angleLeft,1);
-//    moveOn(delayTime);
+//    moveOn(delayTime+20); 
+//    Hand(150,150,150,0);
+//    Hand(150,150,150,1);
+//    moveOn(delayTime+500);
 }
 
 
