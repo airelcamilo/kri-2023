@@ -557,32 +557,16 @@ void setup(){
   Hand(180,180,150,1);
   Hand(180,180,150,0);
   moveOn(1000); 
-  Body(180,215);//180, 190
+  Body(180,215);
   delay(1000);
   kuda(30);
-  
-  //buat bediri tegak
-//   Leg(0, normalFootHeight, -tiltOffset, 0, 0, angleLeft, 1);
-//  Leg(0, normalFootHeight, tiltOffset, 0, 0, angleRight, 0);
-//  Hand(center,center,center,1);
-//  Hand(center,center,center,0);
-//  Body(180,150);
-//  moveOn(delayTime);
-
-
-//    Leg(0, normalFootHeight, -tiltOffset, -rotasiKaki, tegak, angleLeft, 1);
-//    Leg(0, normalFootHeight, tiltOffset, rotasiKaki+7.25, tegak, angleRight, 0);
-//    Hand(180,center,230,1);
-//    Hand(180,center,230,0);
-//    Body(180,215);
-//    moveOn(500);
-//    diamDiTempat();
-//    delay(3000);
 }
 
 int tutup = 0;
 
 void loop() {
+  // Belum putar kanan, tendang
+  // Udah jalan tapi jadi gk bisa
  
 //////////////////////////////////////////////////////////////////////
 ////////////////Vision learn loop/////////////////////////////
@@ -600,7 +584,7 @@ void loop() {
 //  SerialUSB.print("Nilai gerakan:");
 //  SerialUSB.println(intGerakan);
 
-  tendang();
+  //tendang();
   
   //transisiKepitingKanan();
   //kepitingKanan();
@@ -610,22 +594,25 @@ void loop() {
   //kepitingKiri();
   //pascaKepitingKiri();
   
-  //awalPutarKanan();
-  //putarKanan();
-  //akhirPutarKanan();
+//  awalPutarKanan();
+//  for (int i=0; i<10; i++) {
+//    putarKanan();
+//    i++;
+//  }
+//  akhirPutarKanan();
   
-  //awalPutarKiri();
-  //putarKiri();
-  //akhirPutarKiri();
+//  awalPutarKiri();
+//  for (int i=0; i<10; i++) {
+//    putarKiri();
+//    i++;
+//  }
+//  akhirPutarKiri();
   
   //jalanDiTempat();
   
-  //runsTestDarnet();
-  
-  //rigs();
+  //transisiJalan();
+  jalan();
 
-
-  //jalan(); v
   
   //Body(xKepala,yKepala);
   //moveOn(delayTime);
@@ -747,159 +734,165 @@ void loop() {
 }
 
 void transisiKepitingKanan() {
-    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleRight, 1);
-    Leg(-2.15, normalFootHeight-40, tiltOffset-5, rotasiKaki, tegak+6.5, angleLeft, 0);
+    //done 10-5-23
+    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+8, angleRight, 1);
+    Leg(-2.15, normalFootHeight-40, tiltOffset-5, rotasiKaki, tegak+8, angleLeft, 0);
     moveOn(delayTime+10);
-    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleRight, 1);
-    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+6.5, angleLeft, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+8, angleRight, 1);
+    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+8, angleLeft, 0);
     moveOn(delayTime+10);
 }
 
 void kepitingKanan() {
-    Leg(-2.15, normalFootHeight-40, tiltOffset-5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    //done 10-5-23
+    Leg(0, normalFootHeight-40, tiltOffset-5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(-2.15, normalFootHeight-10, -tiltOffset+5, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
-    Leg(-2.15, normalFootHeight-20, tiltOffset+15, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset-10, -rotasiKaki-0.5, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset+15, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(-2.15, normalFootHeight-10, -tiltOffset-10, -rotasiKaki-7.5, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
     
-    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-40, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(-2.15, normalFootHeight-40, -tiltOffset+5, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
-    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(-2.15, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10); 
 }
 
 void pascaKepitingKanan() {
-    Leg(0, normalFootHeight-40, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleRight, 1);
-    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+6.5, angleLeft, 0);
+    //done 10-5-23
+    Leg(0, normalFootHeight-40, -tiltOffset+5, -rotasiKaki, tegak+8, angleRight, 1);
+    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+8, angleLeft, 0);
     moveOn(delayTime+10);
-    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleRight, 1);
-    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+6.5, angleLeft, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+8, angleRight, 1);
+    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+8, angleLeft, 0);
     moveOn(delayTime+10);
 }
 
 void transisiKepitingKiri() {
-    Leg(-2.15, normalFootHeight-40, tiltOffset-5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    //done 10-5-23
+    Leg(-2.15, normalFootHeight-40, tiltOffset-5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
-    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
 }
 
 void kepitingKiri() {
-    Leg(-2.15, normalFootHeight-10, tiltOffset-5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-40, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    //done 10-5-23
+    Leg(-2.15, normalFootHeight-10, tiltOffset-5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-40, -tiltOffset+5, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
-    Leg(-2.15, normalFootHeight-10, tiltOffset+10, rotasiKaki+7.5, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset-15, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    Leg(-2.15, normalFootHeight-10, tiltOffset+10, rotasiKaki+7.5, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset-15, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
     
-    Leg(-2.15, normalFootHeight-40, tiltOffset-5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    Leg(-2.15, normalFootHeight-40, tiltOffset-5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
-    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10); 
 }
 
 void pascaKepitingKiri() {
-    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-40, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleLeft, 1);
+  //done 10-5-23
+    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-40, -tiltOffset+5, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
-    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    Leg(-2.15, normalFootHeight-20, tiltOffset-5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
 }
 
-void awalputarKanan() {
-    //baru
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleRight, 1);
+void awalPutarKanan() {
+    //done 10-5-23
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleRight, 1);
     Leg(0, normalFootHeight-40, tiltOffset, rotasiKaki, tegak+6.5, angleLeft, 0);
     moveOn(delayTime+10);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleRight, 1);
-    Leg(-2.15, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleLeft, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleRight, 1);
+    Leg(-2.15, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleLeft, 0);
     moveOn(delayTime+10); 
 }
 
 void putarKanan() {
-    //baru
+    //done 10-5-23
     //angkat kaki kanan
-    Leg(0, normalFootHeight-40, tiltOffset-2.5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-40, tiltOffset-2.5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime-27);
     //putar kaki kiri
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-10.5, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-10.5, tegak+8, angleLeft, 1);
     moveOn(delayTime-27);
     //turunkan kaki kanan dengan kaki kiri masih terputar
-    Leg(0, normalFootHeight-20, tiltOffset-2.5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-10.5, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset-2.5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-10.5, tegak+8, angleLeft, 1);
     moveOn(delayTime-27);
     //angkat kaki kiri
-    Leg(0, normalFootHeight-20, tiltOffset-2.5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-40, -tiltOffset, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset-2.5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-40, -tiltOffset, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
-    Leg(0, normalFootHeight-20, tiltOffset-2.5, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset-2.5, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
 }
 
-void akhirputarKanan() {
-    //baru
-    Leg(0, normalFootHeight-40, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleRight, 1);
+void akhirPutarKanan() {
+    //done 10-5-23
+    Leg(0, normalFootHeight-40, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleRight, 1);
     Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleLeft, 0);
     moveOn(delayTime+10);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleRight, 1);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleRight, 1);
     Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleLeft, 0);
     moveOn(delayTime+10); 
 }
 
-void awalputarKiri() {
-    //baru
-    Leg(0, normalFootHeight-40, tiltOffset, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleLeft, 1);
+void awalPutarKiri() {
+    //done 10-5-23
+    Leg(0, normalFootHeight-40, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
-    Leg(-2.15, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleLeft, 1);
+    Leg(-2.15, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleLeft, 1);
     moveOn(delayTime+10); 
 }
 
 void putarKiri() {
-    //baru
+    //done 10-5-23
     //angkat kaki kiri
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-40, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-40, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleLeft, 1);
     moveOn(delayTime-27);
     //putar kaki kanan
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki+12.5, tegak+6.5, angleRight, 0);
+    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki+12.5, tegak+8, angleRight, 0);
     moveOn(delayTime-27);
     //turunkan kaki kiri dengan kaki kanan masih terputar
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki+12.5, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki+12.5, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleLeft, 1);
     moveOn(delayTime-27);
     //angkat kaki kanan
-    Leg(0, normalFootHeight-40, tiltOffset, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-40, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleLeft, 1);
     moveOn(delayTime+10); 
 }
 
-void akhirputarKiri() {
-    //baru
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-40, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleLeft, 1);
+void akhirPutarKiri() {
+    //done 10-5-23
+    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-40, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleLeft, 1);
     moveOn(delayTime+10);
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight, 0);
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+6.5, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki-2.5, tegak+8, angleLeft, 1);
     moveOn(delayTime+10); 
 }
 
-void jalanDiTempat() { //AMAN
-    //baru
+void jalanDiTempat() {
+    //done 10-5-23
     //nilai a untuk kemiringan kaki, nilai A untuk tegak enggaknya badan  
     Leg(0, normalFootHeight-40, tiltOffset-5, rotasiKaki, tegak+10, angleRight, 0);
     Leg(0, normalFootHeight-20, -tiltOffset+5, -rotasiKaki, tegak+10, angleLeft, 1);
@@ -919,6 +912,7 @@ void jalanDiTempat() { //AMAN
 
 
 void diamDiTempat() {
+    //done 10-5-23
     Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak, angleLeft, 1);
     Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak, angleRight, 0);
     Hand(180,center,230,1);
@@ -927,68 +921,12 @@ void diamDiTempat() {
     moveOn(delayTime);
 }
 
-
-void runsTestDarnet() { //buat lari kedepan
-    //Jalan Baru
-    //kaki berbentuk segitiga (kiri didepan)
-    Leg(walkDistanceOffset-5, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight,0); //-35
-    Leg(walkDistance+5, normalFootHeight - 20, -tiltOffset, rotasiKaki+5, tegak+6.5, angleLeft,1); //-65
-    moveOn(delayTime+10); 
-    //kaki berbentuk huruf P
-    Leg(0, normalFootHeight-40, tiltOffset, rotasiKaki, tegak+6.5, angleRight,0); //-35
-    Leg(0, normalFootHeight - 20, -tiltOffset, rotasiKaki+5, tegak+6.5, angleLeft,1); //-65
-    moveOn(delayTime+10); 
-    //kaki berbentuk segitiga(kanan didepan)
-    Leg(walkDistance+5, normalFootHeight-20, tiltOffset , rotasiKaki, tegak+6.5, angleRight,0); //-55
-    Leg(walkDistanceOffset-5, normalFootHeight-20, -tiltOffset+5, rotasiKaki+5, tegak+6.5, angleLeft,1); //-55
-    moveOn(delayTime+10); 
-    //kaki berbentuk huruf P(kaki kiri angkat)
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight,0); //-35
-    Leg(0, normalFootHeight - 40, -tiltOffset, rotasiKaki+5, tegak+6.5, angleLeft,1); //-65
-    moveOn(delayTime+10); 
-}
-
-void transisiLari() {
-    //baru
-    //kaki berbentuk huruf P
-    Leg(0, normalFootHeight-35, tiltOffset, rotasiKaki, tegak+6.5, angleRight,0); //-35
-    Leg(0, normalFootHeight - 20, -tiltOffset, -rotasiKaki, tegak+6.5, angleLeft,1); //-65
-    moveOn(delayTime+10); 
-    //kaki berbentuk segitiga(kanan didepan)
-    Leg(walkDistance+5, normalFootHeight-20, tiltOffset , rotasiKaki, tegak+6.5, angleRight,0); //-55
-    Leg(walkDistanceOffset-5, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+6.5, angleLeft,1); //-55
-    moveOn(delayTime+10); 
-    //kaki berbentuk huruf P(kaki kiri angkat)
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight,0); //-35
-    Leg(0, normalFootHeight - 35, -tiltOffset, -rotasiKaki, tegak+6.5, angleLeft,1); //-65
-    moveOn(delayTime+10); 
-    
-}
-
 void transisiJalan() {
-  //baru
+    //done 10-5-23
     Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight,0); //-35
     Leg(0, normalFootHeight - 20, -tiltOffset, -rotasiKaki, tegak+6.5, angleLeft,1); //-65
     moveOn(delayTime+10); 
 
-}
-
-
-void rigs(){ //geser ke kiri circle
-  //kuda(50);
-    //kanan 1
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 0 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, 0, 0,15,angleLeft,1);
-    Hand(150,150,150,1);
-    Hand(150,150,150,0);
-    moveOn(delayTime); 
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 10 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, -30, 0,15,angleLeft,1);
-    moveOn(delayTime/2); 
-    //kanan 2
-    Leg(walkDistanceOffset + walkDistance*3 - 10,normalFootHeight - 50, 10 ,-20,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 50, -30, 0,15,angleLeft,1);
-    moveOn(delayTime); 
 }
 
 void jalan(){
@@ -1016,14 +954,14 @@ void jalan(){
     //kaki berbentuk huruf P(kaki kiri angkat)
     Hand(170,center,150,0);
     Hand(190,center,150,1);
-    Leg(0, normalFootHeight-20, tiltOffset-5, rotasiKaki+10, tegak+6.5, angleRight,0); //-35
-    Leg(0, normalFootHeight - 40, -tiltOffset-5, -rotasiKaki-10, tegak+6.5, angleLeft,1); //-65
+    Leg(0, normalFootHeight-20, tiltOffset-5, rotasiKaki+10, tegak+8, angleRight,0); //-35
+    Leg(0, normalFootHeight - 40, -tiltOffset-5, -rotasiKaki-10, tegak+8, angleLeft,1); //-65
     moveOn(delayTime+40); 
 }
 
 void transisiTendang() {
-    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+6.5, angleLeft, 1);
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight, 0);
+    Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+8, angleLeft, 1);
+    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
     moveOn(delayTime+10);
 }
 
@@ -1063,114 +1001,6 @@ void tendang(){
 //    moveOn(delayTime+500);
 }
 
-
-
-//
-//int period1 = 35000;
-//   int period2 = 5000;
-//   int period3 = 20000;
-//   int period4 = 3000;
-//   int period5 = 25000;
-//   int period6 = 0;
-//   int period7 = 0;
-//   int period8 = 50000;
-//   int sekarang,tutup;
-//  
-//  
-//      isdelay = true;
-//      if (isdelay == true){delay(1000); isdelay = false;}
-//      kuda(50);
-//      tutup = millis() + period1;
-//      while(/*arah == 'W'*/true) {//lari kedepan
-//        //kuda(50);
-//        runsTest();
-//        isread = true;
-//        SerialUSB.print("maju");
-//        if(millis() > tutup) break;
-//      }
-//      isdelay = true;
-//      if (isdelay == true){delay(1000); isdelay = false;}
-//      kuda(50);
-//      tutup = millis() + period2;
-//      while(/*arah == 'F'*/true) {//kepiting kiri
-//        //kuda(50);
-//        rig();
-//        isread = true;
-//        SerialUSB.print("kiri");
-//        if(millis() > tutup) break;
-//      }
-//      isdelay = true;
-//      if (isdelay == true){delay(1000); isdelay = false;}
-//      kuda(50);
-//      tutup = millis() + period3;
-//      while(/*arah == 'W'*/true) {//lari kedepan
-//        //kuda(50);
-//        runsTest();
-//        isread = true;
-//        SerialUSB.print("lurus");
-//        if(millis() > tutup) break;
-//      }
-//      isdelay = true;
-//      if (isdelay == true){delay(1000); isdelay = false;}
-//      kuda(50);
-//       tutup = millis() + period4;
-//      while(/*arah == 'G'*/true) {//kepiting kanan
-//        //kuda(50);
-//        rig();
-//        isread = true;
-//        SerialUSB.print("kanan");
-//        if(millis() > tutup) break;
-//      }
-//      isdelay = true;
-//      if (isdelay == true){delay(1000); isdelay = false;}
-//      kuda(50);
-//      tutup = millis() + period5;
-//      while(/*arah == 'R'*/true) {//muter ditempat
-//        //kuda(50);
-//        runsTest();
-//        isread = true;
-//        SerialUSB.print("puter");
-//        if(millis() > tutup)break;
-//      }
-//      isdelay = true;
-//      if (isdelay == true){delay(1000); isdelay = false;}
-//      kuda(50);
-//      tutup = millis() + period6;
-//      while(/*arah == 'P'*/true) {
-//        rig();
-//        isread = true;
-//        SerialUSB.print("lari");
-//        if(millis() > tutup)break;
-//      }
-//      isdelay = true;
-//      if (isdelay == true){delay(1000); isdelay = false;}
-//      kuda(50);
-//      tutup = millis() + period7;
-//      while(/*arah == 'P'*/true) {
-//        runsTest();
-//        isread = true;
-//        SerialUSB.print("lari");
-//        if(millis() > tutup)break;
-//      }
-//      isdelay = true;
-//      if (isdelay == true){delay(1000); isdelay = false;}
-//      kuda(50);
-//      tutup = millis() + period8;
-//      while(/*arah == 'P'*/true) {
-//        kuda(50);
-//        isread = true;
-//        SerialUSB.print("lari");
-//        if(millis() > tutup)break;
-//      }
-
-
-
-
-
-
-//*****************************************************
-//******************kodingan moes**********************
-
 void kuda(int a){
   if(isKuda == false){
     Leg(walkDistanceOffset + walkDistance - 10 ,normalFootHeight - a, 0,0,10,angleLeft,1);
@@ -1182,222 +1012,6 @@ void kuda(int a){
     delay(500);
   }
 }
-
-void start(){
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 0 ,0,10,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance*2)- 10,normalFootHeight - 60, 0, 0,10,angleRight,0);
-    Hand(150,150,150,0);
-    Hand(210,150,150,1);
-    moveOn(delayTime); 
-//    delay(1000);
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 50, 0 ,0,10,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance*3)- 10,normalFootHeight - 50, 0, 0,10,angleRight,0);
-    Hand(150,150,150,0);
-    Hand(210,150,150,1);
-    moveOn(delayTime); 
-//    delay(1000);
-}
-
-void run(){
-    //kiri 1
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 0 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, 0, 0,15,angleLeft,1);
-    Hand(150,150,150,1);
-    Hand(210,150,150,0);
-    moveOn(delayTime); 
- //   delay(1000);
-    //kiri 2
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 5 ,15,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance*2)- 10,normalFootHeight - 60, 0, 0,15,angleLeft,1);
-    moveOn(delayTime/2); 
- //   delay(1000);
- 
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 50, 5 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance*3)- 10,normalFootHeight - 50, 0, 0,15,angleLeft,1);
-    Hand(150,150,150,1);
-    Hand(210,150,150,0);
-    moveOn(delayTime); 
- 
-    //kanan 1
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 5 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, 0, 0,15,angleRight,0);
-    Hand(150,150,150,0);
-    Hand(210,150,150,1);
-    moveOn(delayTime); 
-//    delay(1000);
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 5 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance*2)- 10,normalFootHeight - 60, 0, 0,15,angleRight,0);
-    moveOn(delayTime/2); 
-    //kanan 2
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 50, 0 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance*3)- 10,normalFootHeight - 50, 0, 0,15,angleRight,0);
-    Hand(150,150,150,0);
-    Hand(210,150,150,1);
-    moveOn(delayTime); 
-    
-}
-
-void test(){
-     //kiri 1
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 0 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, 0, 30,15,angleLeft,1);
-    Hand(150,150,150,1);
-    Hand(210,150,150,0);
-    moveOn(delayTime); 
- //   delay(1000);
-    //kiri 2
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 5 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance*2)- 10,normalFootHeight - 60, 0, 0,15,angleLeft,1);
-    moveOn(delayTime/2); 
- //   delay(1000);
- 
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 50, 5 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance*3)- 10,normalFootHeight - 50, 0, 0,15,angleLeft,1);
-    Hand(150,150,150,1);
-    Hand(210,150,150,0);
-    moveOn(delayTime); 
- 
-    //kanan 1
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 5 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, 0, 0,15,angleRight,0);
-    Hand(150,150,150,0);
-    Hand(210,150,150,1);
-    moveOn(delayTime); 
-//    delay(1000);
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 5 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance*2)- 10,normalFootHeight - 60, 0, 0,15,angleRight,0);
-    moveOn(delayTime/2); 
-    //kanan 2
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 50, 0 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance*3)- 10,normalFootHeight - 50, 0, 0,15,angleRight,0);
-    Hand(150,150,150,0);
-    Hand(210,150,150,1);
-    moveOn(delayTime); 
-   
-}
-
-void runs(){
-    //kiri 1
- //   delay(1000);
-    //kiri 2
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 5 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance*2)- 10,normalFootHeight - 60, 0, 0,15,angleLeft,1);
-    Hand(150,150,150,1);
-    Hand(210,150,150,0);
-    moveOn(delayTime/2); 
- //   delay(1000);
- 
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 50, 5 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance*3)- 10,normalFootHeight - 50, 0, 0,15,angleLeft,1);
-    Hand(150,150,150,1);
-    Hand(210,150,150,0);
-    moveOn(delayTime); 
- 
-    //kanan 1
-//    delay(1000);
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 5 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance*2)- 10,normalFootHeight - 60, 0, 0,15,angleRight,0);
-    Hand(150,150,150,0);
-    Hand(210,150,150,1);    
-    moveOn(delayTime/2); 
-    //kanan 2
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 50, 0 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance*3)- 10,normalFootHeight - 50, 0, 0,15,angleRight,0);
-    Hand(150,150,150,0);
-    Hand(210,150,150,1);
-    moveOn(delayTime); 
-    
-}
-
-void left(){
-  isKuda = false;
-    kuda(50);
-    Leg(walkDistanceOffset + walkDistance - 10 ,normalFootHeight - 50, 30,0,10,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance) - 10,normalFootHeight - 55, 40,0,10,angleRight,0);
-    moveOn(400);
-    
-    Leg(walkDistanceOffset + walkDistance - 10 ,normalFootHeight - 50, 20,0,10,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance*4) - 10,normalFootHeight - 55, 40,0,10,angleRight,0);
-    moveOn(400);
-    
-    Leg(walkDistanceOffset + walkDistance - 10 ,normalFootHeight - 50, 20,0,10,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance*4) - 10,normalFootHeight -50, 30,0,10,angleRight,0);
-    moveOn(400);
-    delay(500);
-}
-
-void lefts(){
-  isKuda = false;
-    kuda(50);
-    Leg(walkDistanceOffset + walkDistance - 10 ,normalFootHeight - 50, -30,0,10,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance) - 10,normalFootHeight - 55, -40,0,10,angleLeft,1);
-    moveOn(400);
-    
-    Leg(walkDistanceOffset + walkDistance - 10 ,normalFootHeight - 50, -20,0,10,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance*3) - 10,normalFootHeight - 55, -40,0,10,angleLeft,1);
-    moveOn(400);
-    
-    Leg(walkDistanceOffset + walkDistance - 10 ,normalFootHeight - 50, -20,0,10,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance*3) - 10,normalFootHeight -50, -30,0,10,angleLeft,1);
-    moveOn(400);
-  delay(500);
-}
-
-void right(){
-  
-    //kiri 1
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 0 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, 0, 0,15,angleLeft,1);
-    Hand(150,150,150,1);
-    Hand(150,150,150,0);
-    moveOn(delayTime); 
- //   delay(1000);
-    //kiri 2
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 10 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, -30, 0,15,angleLeft,1);
-    moveOn(delayTime/2); 
- //   delay(1000);
- 
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 50, 10 ,0,15,angleRight,0);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 50, -30, 0,15,angleLeft,1);
-    moveOn(delayTime); 
-}
-void rights(){
-  //kuda(50);
-    //kanan 1
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 0 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, 0, 0,15,angleRight,0);
-    Hand(150,150,150,1);
-    Hand(150,150,150,0);
-    moveOn(delayTime); 
-//    delay(1000);
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, -10 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, 30, 0,15,angleRight,0);
-    moveOn(delayTime/2); 
-    //kanan 2
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 50, -10 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 50, 30, 0,15,angleRight,0);
-    moveOn(delayTime); 
-}
-
-void rig(){ //geser ke kiri circle
-  //kuda(50);
-    //kanan 1
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, 0 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, 0, 0,15,angleRight,0);
-    Hand(150,150,150,1);
-    Hand(150,150,150,0);
-    moveOn(delayTime); 
-//    delay(1000);
-    Leg(walkDistanceOffset + walkDistance - 10,normalFootHeight - 40, -10 ,0,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 60, 30, 0,15,angleRight,0);
-    moveOn(delayTime/2); 
-    //kanan 2
-    Leg(walkDistanceOffset + walkDistance*3 - 10,normalFootHeight - 50, -10 ,20,15,angleLeft,1);
-    Leg(walkDistanceOffset + (walkDistance)- 10,normalFootHeight - 50, 30, 0,15,angleRight,0);
-    moveOn(delayTime); 
-}
-
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////// YANG INI MAD ///////////////////////////////////////////////////////////////
