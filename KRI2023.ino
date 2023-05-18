@@ -594,12 +594,13 @@ void loop() {
   //kepitingKiri();
   //pascaKepitingKiri();
  
+  transisiJalan();
   for (int i=0; i<20; i++) {
     jalan(); 
   }
-//  transisiTendang();
-//  tendang();
-//  transisiTendang();
+  transisiTendang();
+  tendang();
+  transisiTendang();
 //  
 //  awalPutarKanan();
 //  for (int i=0; i<20; i++) {
@@ -991,10 +992,10 @@ void tendang() {
   moveOn(delayTime+100);
   
   Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
-  moveOn(delayTime+10);
+  moveOn(delayTime+100);
   
   Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+8, angleLeft, 1);
-  moveOn(delayTime+10); 
+ moveOn(delayTime+500); 
 }
 
 void kuda(int a){
