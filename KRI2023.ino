@@ -979,15 +979,17 @@ void transisiTendang() {
 void tendang() {
   // gerakin tapak kaki kiri muter
   Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+20, angleLeft, 1);
-  Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+  Leg(0, normalFootHeight, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
   angleLeft[5] -= 20;
   moveOn(delayTime+1000); 
   
   // kaki kanan ke belakang
   Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak-30, angleRight, 0);
+  moveOn(delayTime+10);
+  Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak-30, angleRight, 0);
   moveOn(delayTime+500);
   Leg(-100, normalFootHeight-60, tiltOffset, rotasiKaki, tegak-30, angleRight, 0);
-  moveOn(delayTime+500);
+  moveOn(delayTime+10);
   
   // kaki kanan nendang
   Leg(-50,normalFootHeight-60,tiltOffset,rotasiKaki,tegak+45,angleRight,0);
@@ -996,11 +998,13 @@ void tendang() {
   moveOn(delayTime+50);
   
   // kaki kanan kembali
-  Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+  Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak-5, angleRight, 0);
+  moveOn(delayTime+10);
+  Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+15, angleRight, 0);
   moveOn(delayTime+10);
   
   // kaki kiri kembali
-  Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+8, angleLeft, 1);
+  Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+15, angleLeft, 1);
  `moveOn(delayTime+10); 
 }
 
