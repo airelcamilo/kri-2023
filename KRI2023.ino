@@ -983,19 +983,25 @@ void tendang() {
   angleLeft[5] -= 20;
   moveOn(delayTime+1000); 
   
-  // kaki kanan tendang
+  // kaki kanan ke belakang
   Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak-30, angleRight, 0);
   moveOn(delayTime+500);
   Leg(-100, normalFootHeight-60, tiltOffset, rotasiKaki, tegak-30, angleRight, 0);
   moveOn(delayTime+500);
+  
+  // kaki kanan nendang
   Leg(-50,normalFootHeight-60,tiltOffset,rotasiKaki,tegak+45,angleRight,0);
   moveOn(delayTime+50);
+  Leg(-50,normalFootHeight,tiltOffset,rotasiKaki,tegak+65,angleRight,0);
+  moveOn(delayTime+50);
   
+  // kaki kanan kembali
   Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
   moveOn(delayTime+10);
   
+  // kaki kiri kembali
   Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+8, angleLeft, 1);
- moveOn(delayTime+10); 
+ `moveOn(delayTime+10); 
 }
 
 void kuda(int a){
