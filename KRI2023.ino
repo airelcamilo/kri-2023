@@ -977,7 +977,7 @@ void transisiTendang() {
 }  
 
 void tendang() {
-  // gerakin tapak kaki muter kiri, kanan
+  // gerakin tapak kaki kiri muter
   Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+20, angleLeft, 1);
   Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
   angleLeft[5] -= 20;
@@ -985,17 +985,17 @@ void tendang() {
   
   // kaki kanan tendang
   Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak-30, angleRight, 0);
-  moveOn(delayTime+1000);
+  moveOn(delayTime+500);
   Leg(-100, normalFootHeight-60, tiltOffset, rotasiKaki, tegak-30, angleRight, 0);
   moveOn(delayTime+500);
   Leg(-50,normalFootHeight-60,tiltOffset,rotasiKaki,tegak+45,angleRight,0);
-  moveOn(delayTime+100);
+  moveOn(delayTime+50);
   
   Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
-  moveOn(delayTime+100);
+  moveOn(delayTime+10);
   
   Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+8, angleLeft, 1);
- moveOn(delayTime+500); 
+ moveOn(delayTime+10); 
 }
 
 void kuda(int a){
