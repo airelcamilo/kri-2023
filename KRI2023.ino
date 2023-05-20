@@ -935,8 +935,8 @@ void diamDiTempat() {
 
 void transisiJalan() {
     //done 10-5-23
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+15, angleRight,0); //-35
-    Leg(0, normalFootHeight - 20, -tiltOffset, -rotasiKaki, tegak+15, angleLeft,1); //-65
+    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+10, angleRight,0); //-35
+    Leg(0, normalFootHeight - 20, -tiltOffset, -rotasiKaki, tegak+10, angleLeft,1); //-65
     moveOn(delayTime+1000); 
 }
 
@@ -951,8 +951,8 @@ void jalan(){
     //kaki berbentuk huruf P
     Hand(190,center,150,0);
     Hand(170,center,150,1);
-    Leg(0, normalFootHeight-40, tiltOffset-5, rotasiKaki+10, tegak+10, angleRight,0); //-35
-    Leg(0, normalFootHeight - 20, -tiltOffset, -rotasiKaki-10, tegak+10, angleLeft,1); //-65
+    Leg(0, normalFootHeight-40, tiltOffset-5, rotasiKaki+10, tegak+5, angleRight,0); //-35
+    Leg(0, normalFootHeight - 20, -tiltOffset, -rotasiKaki-10, tegak+5, angleLeft,1); //-65
     moveOn(delayTime+50); 
     
     //kaki berbentuk segitiga(kanan didepan)
@@ -965,8 +965,8 @@ void jalan(){
     //kaki berbentuk huruf P(kaki kiri angkat)
     Hand(170,center,150,0);
     Hand(190,center,150,1);
-    Leg(0, normalFootHeight-20, tiltOffset-5, rotasiKaki+10, tegak+10, angleRight,0); //-35
-    Leg(0, normalFootHeight - 40, -tiltOffset-5, -rotasiKaki-10, tegak+10, angleLeft,1); //-65
+    Leg(0, normalFootHeight-20, tiltOffset-5, rotasiKaki+10, tegak+5, angleRight,0); //-35
+    Leg(0, normalFootHeight - 40, -tiltOffset-5, -rotasiKaki-10, tegak+5, angleLeft,1); //-65
     moveOn(delayTime+50); 
 }
 
@@ -1003,10 +1003,10 @@ void tendang() {
   moveOn(delayTime+50);
   
   // kaki kanan kembali
-  Leg(-10, normalFootHeight-30, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
-  //angleRight[4] -= 25;
+  Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+  angleRight[4] -= 25;
   moveOn(delayTime+50);
-  Leg(-10, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+  Leg(10, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+10, angleRight, 0);
   moveOn(delayTime+200);
   
   // kaki kiri kembali
