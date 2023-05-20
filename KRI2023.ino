@@ -595,9 +595,10 @@ void loop() {
   //pascaKepitingKiri();
  
   transisiJalan();
-  for (int i=0; i<20; i++) {
+  for (int i=0; i<10; i++) {
     jalan(); 
   }
+  pascaJalan();
   transisiTendang();
   tendang();
   transisiTendang();
@@ -934,10 +935,9 @@ void diamDiTempat() {
 
 void transisiJalan() {
     //done 10-5-23
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+6.5, angleRight,0); //-35
-    Leg(0, normalFootHeight - 20, -tiltOffset, -rotasiKaki, tegak+6.5, angleLeft,1); //-65
-    moveOn(delayTime+10); 
-
+    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+15, angleRight,0); //-35
+    Leg(0, normalFootHeight - 20, -tiltOffset, -rotasiKaki, tegak+15, angleLeft,1); //-65
+    moveOn(delayTime+1000); 
 }
 
 void jalan(){
@@ -970,42 +970,48 @@ void jalan(){
     moveOn(delayTime+50); 
 }
 
+void pascaJalan() {
+    //done 6-5-23
+    Hand(180,center,150,0);
+    Hand(180,center,150,1);
+    Leg(walkDistanceOffset-5, normalFootHeight-20, tiltOffset-5, rotasiKaki+10, tegak+10, angleRight,0); //-35
+    Leg(walkDistance+5, normalFootHeight - 20, -tiltOffset, -rotasiKaki-10, tegak+10, angleLeft,1); //-65
+    moveOn(delayTime+100); 
+}
+
 void transisiTendang() {
     Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+8, angleLeft, 1);
     Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
-    moveOn(delayTime+10);
+    moveOn(delayTime+2000);
 }  
 
 void tendang() {
   // gerakin tapak kaki kiri muter
-  Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+20, angleLeft, 1);
-  Leg(0, normalFootHeight, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
-  angleLeft[5] -= 20;
+  Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+10, angleLeft, 1);
+  angleLeft[5] -= 15;
+  Leg(0, normalFootHeight-10, tiltOffset, rotasiKaki, tegak+10, angleRight, 0);
   moveOn(delayTime+1000); 
-  
+
   // kaki kanan ke belakang
-  Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak-30, angleRight, 0);
-  moveOn(delayTime+10);
-  Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak-30, angleRight, 0);
-  moveOn(delayTime+500);
-  Leg(-100, normalFootHeight-60, tiltOffset, rotasiKaki, tegak-30, angleRight, 0);
-  moveOn(delayTime+10);
+  Leg(0, normalFootHeight-60, tiltOffset, rotasiKaki+10, tegak-30, angleRight, 0);
+  moveOn(delayTime+200);
   
   // kaki kanan nendang
-  Leg(-50,normalFootHeight-60,tiltOffset,rotasiKaki,tegak+45,angleRight,0);
-  moveOn(delayTime+50);
-  Leg(-50,normalFootHeight,tiltOffset,rotasiKaki,tegak+65,angleRight,0);
+  Leg(-50,normalFootHeight-50,tiltOffset,rotasiKaki,tegak+10,angleRight,0);
+  moveOn(delayTime+10);
+  Leg(50,normalFootHeight-30,tiltOffset,rotasiKaki,tegak+20,angleRight,0);
   moveOn(delayTime+50);
   
   // kaki kanan kembali
-  Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak-5, angleRight, 0);
-  moveOn(delayTime+10);
-  Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+15, angleRight, 0);
-  moveOn(delayTime+10);
+  Leg(-10, normalFootHeight-30, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+  //angleRight[4] -= 25;
+  moveOn(delayTime+50);
+  Leg(-20, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+  moveOn(delayTime+200);
   
   // kaki kiri kembali
-  Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+15, angleLeft, 1);
- `moveOn(delayTime+10); 
+  Leg(0, normalFootHeight-20, -tiltOffset, -rotasiKaki, tegak+10, angleLeft, 1);
+  moveOn(delayTime+200); 
 }
 
 void kuda(int a){
