@@ -44,7 +44,7 @@ int walkDistance = 15; //x
 int walkDistanceOffset = -15; //-x
 int tiltOffset = 15; //z
 int rotasiKaki = 0; //a
-int tegak = 0;  //A
+int tegak = 7;  //A
 
 int walkTilt = 30;
 int walkFootLift = normalFootHeight - 55;
@@ -1006,7 +1006,7 @@ void tendang() {
   Leg(-10, normalFootHeight-30, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
   //angleRight[4] -= 25;
   moveOn(delayTime+50);
-  Leg(-20, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
+  Leg(-10, normalFootHeight-20, tiltOffset, rotasiKaki, tegak+8, angleRight, 0);
   moveOn(delayTime+200);
   
   // kaki kiri kembali
