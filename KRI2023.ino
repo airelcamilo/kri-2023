@@ -622,7 +622,6 @@ void loop() {
 //  }
 
   int periodJalanDiTempat = 2000;
-  intGerakan = 2;
   if (intGerakan == 0 || intGerakan == 1 || intGerakan == 2) {
     // Reset kamera
     isKepalaUp = false;
