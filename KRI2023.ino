@@ -593,35 +593,8 @@ void loop() {
   SerialUSB.print("Nilai gerakan:");
   SerialUSB.println(intGerakan);
 
-//  transisiJalan();
-//  for (int i=0; i<10; i++) {
-//    jalan(); 
-//  }
-//  pascaJalan();
-//  transisiTendang();
-//  tendang();
-//  transisiTendang();
-//  
-//  awalPutarKanan();
-//  for (int i=0; i<20; i++) {
-//    putarKanan();
-//    i++;
-//  }
-//  akhirPutarKanan();
-//  
-//  awalPutarKiri();
-//  for (int i=0; i<20; i++) {
-//    putarKiri();
-//    i++;
-//  }
-//  akhirPutarKiri();
-//  
-//  for (int i=0; i<20; i++) {
-//    jalanDiTempat();
-//    i++;
-//  }
-
-  int periodJalanDiTempat = 2000;
+  int periodJalanDiTempat = 1200;
+  intGerakan = 5;
   if (intGerakan == 0 || intGerakan == 1 || intGerakan == 2) {
     // Reset kamera
     isKepalaUp = false;
@@ -661,9 +634,26 @@ void loop() {
         }
       }
       
-      while(intGerakan == 0) { // Jalan
+      while(intGerakan == 0 || intGerakan == 3 || intGerakan == 4) { // Jalan
         jalan();
         getSerialDataDarnet(&xKepala,&yKepala,&intGerakan);
+        
+        if(intGerakan == 3) { // Kepala ke atas
+          if (kepalaAngle <= 230) {
+            kepalaUp();
+          }
+        }
+        
+        if(intGerakan == 4) { // Kepala ke bawah
+          if (kepalaAngle >= 180) {
+            kepalaDown();
+          } else {
+            // Tendang kalau kamera paling bawah
+            transisiTendang();
+            tendang();
+            transisiTendang();
+          }
+        }
       }
       
       tutup = millis() + periodJalanDiTempat;
@@ -680,6 +670,7 @@ void loop() {
       isPutarKanan = false;
       isPutarKiri = false;
   }
+  
   if(intGerakan == 1) { // Putar kiri
     if(isJalanDiTempat) {
       isJalanDiTempat = false;
@@ -688,12 +679,7 @@ void loop() {
     if(isPutarKanan) {
        isPutarKanan = false;
        
-      tutup = millis() + 500;
-      while(true) {// Jalan di tempat dulu selama 3 detik
-        jalanDiTempat();
-        if(millis() > tutup) {
-           break;
-        }}
+      diamDiTempat();
       awalPutarKiri();
     }
      putarKiri();
@@ -703,16 +689,14 @@ void loop() {
   }
   
   if(intGerakan == 2) { // Putar kanan
+    if(isJalanDiTempat) {
+      isJalanDiTempat = false;
+      awalPutarKanan();
+    }
     if(isPutarKiri) {
        akhirPutarKiri();
        isPutarKiri = false;
-       
-      tutup = millis() + 500;
-      while(true) {// Jalan di tempat dulu selama 3 detik
-        jalanDiTempat();
-        if(millis() > tutup) {
-           break;
-        }}
+       awalPutarKanan();
     }
      putarKanan(); 
      isPutarKanan = true;
@@ -790,10 +774,10 @@ void search() {
   }
   
   if (isKepalaUp == true && isLeherLeft == false) {
-    if (kepalaAngle != 215) {
+    if (kepalaAngle < 215) {
       kepalaDown();
     }
-    if (kepalaAngle == 215) {
+    if (kepalaAngle >= 215) {
       leherLeft();
       if (leherAngle >= 220) {
         isLeherLeft = true;
@@ -802,7 +786,12 @@ void search() {
   }
   
   if (isLeherLeft == true && isLeherRight == false) {
-    leherRight();
+    if (leherAngle <= 180) {
+      leherRight();
+    }
+    if (leherAngle > 180) {
+      leherRight();
+    }
     if (leherAngle <= 140) {
       isLeherRight = true;
     }
@@ -1017,29 +1006,29 @@ void jalan(){
     //done 6-5-23
     Hand(180,center,150,0);
     Hand(180,center,150,1);
-    Leg(walkDistanceOffset-10, normalFootHeight-20, tiltOffset, rotasiKaki+10, tegak+9, angleRight,0); //-35
-    Leg(walkDistance+10, normalFootHeight - 20, -tiltOffset, -rotasiKaki-10, tegak+9, angleLeft,1); //-65
+    Leg(walkDistanceOffset-10, normalFootHeight-20, tiltOffset, rotasiKaki+10, tegak+10, angleRight,0); //-35
+    Leg(walkDistance+10, normalFootHeight - 20, -tiltOffset, -rotasiKaki-10, tegak+10, angleLeft,1); //-65
     moveOn(delayTime+50); 
     
     //kaki berbentuk huruf P
     Hand(190,center,150,0);
     Hand(170,center,150,1);
-    Leg(0, normalFootHeight-50, tiltOffset, rotasiKaki+10, tegak+9, angleRight,0); //-35
-    Leg(0, normalFootHeight - 20, -tiltOffset, -rotasiKaki-10, tegak+9, angleLeft,1); //-65
+    Leg(0, normalFootHeight-40, tiltOffset, rotasiKaki+10, tegak+10, angleRight,0); //-35
+    Leg(0, normalFootHeight - 20, -tiltOffset, -rotasiKaki-10, tegak+10, angleLeft,1); //-65
     moveOn(delayTime+50); 
     
     //kaki berbentuk segitiga(kanan didepan)
     Hand(180,center,150,0);
     Hand(180,center,150,1);
-    Leg(walkDistance+10, normalFootHeight-20, tiltOffset, rotasiKaki+10, tegak+9, angleRight,0); //-55
-    Leg(walkDistanceOffset-10, normalFootHeight-20, -tiltOffset, -rotasiKaki-10, tegak+9, angleLeft,1); //-55
+    Leg(walkDistance+10, normalFootHeight-20, tiltOffset, rotasiKaki+10, tegak+10, angleRight,0); //-55
+    Leg(walkDistanceOffset-10, normalFootHeight-20, -tiltOffset, -rotasiKaki-10, tegak+10, angleLeft,1); //-55
     moveOn(delayTime+50); 
     
     //kaki berbentuk huruf P(kaki kiri angkat)
     Hand(170,center,150,0);
     Hand(190,center,150,1);
-    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki+10, tegak+9, angleRight,0); //-35
-    Leg(0, normalFootHeight - 50, -tiltOffset, -rotasiKaki-10, tegak+9, angleLeft,1); //-65
+    Leg(0, normalFootHeight-20, tiltOffset, rotasiKaki+10, tegak+10, angleRight,0); //-35
+    Leg(0, normalFootHeight - 40, -tiltOffset, -rotasiKaki-10, tegak+10, angleLeft,1); //-65
     moveOn(delayTime+50); 
 }
 
@@ -1047,7 +1036,7 @@ void pascaJalan() {
     //done 6-5-23
     Hand(180,center,150,0);
     Hand(180,center,150,1);
-    Leg(walkDistanceOffset-5, normalFootHeight-20, tiltOffset-5, rotasiKaki+10, tegak+10, angleRight,0); //-35
+    Leg(walkDistanceOffset-5, normalFootHeight-20, tiltOffset, rotasiKaki+10, tegak+10, angleRight,0); //-35
     Leg(walkDistance+5, normalFootHeight - 20, -tiltOffset, -rotasiKaki-10, tegak+10, angleLeft,1); //-65
     moveOn(delayTime+100); 
 }
